@@ -2,7 +2,9 @@ require("./db/dbinit.js");
 require("dotenv").config();
 const express = require("express");
 const expressSession = require("express-session");
+const cors = require('cors');
 const app = express();
+app.use(cors({ origin: 'http://localhost:4200' }));
 const authMiddleware = require("./middleware/authMiddleware");
 
 //Middleware
@@ -33,7 +35,7 @@ app.listen(port, () => {
 });
 
 // Routes
-app.post("/signup", signupController);
-app.post("/login", loginController);
+app.post("/api/signup", signupController);
+app.post("/api/login", loginController);
 app.get("/checkAuth", authMiddleware, checkingAuthenticationController);
 app.get("/logout", logoutController);
