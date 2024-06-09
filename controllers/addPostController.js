@@ -4,6 +4,7 @@ const addPostController = async (req, res) => {
 
     try {
         const loggedInUserId = req.session.userId; // Assuming you have the user ID in the request object
+        console.log("In Add Post Controller loggedInuser ",loggedInUserId)
         const currentDate = new Date();
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth() + 1; // Months are zero-based, so January is 0
