@@ -9,7 +9,7 @@ const app = express();
 const authMiddleware = require("./middleware/authMiddleware");
 
 // Middleware
-app.use(cors({ credentials: true, origin: 'https://blogz07.netlify.app/login' }));
+app.use(cors({ credentials: true, origin: 'https://blogz07.netlify.app' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
