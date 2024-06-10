@@ -10,7 +10,7 @@ const authMiddleware = require("./middleware/authMiddleware");
 
 // Middleware
 //For Live
-app.use(cors({ credentials: true, origin: 'https://blogz07.netlify.app' }));
+ app.use(cors({ credentials: true, origin: 'https://blogz07.netlify.app' }));
 // For Development 
 // app.use(cors({ credentials: true, origin: 'http://localhost:4200' }));
 app.use(express.json());

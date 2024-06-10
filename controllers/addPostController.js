@@ -22,6 +22,7 @@ const addPostController = async (req, res) => {
                 post: [{
                     title: req.body.title,
                     description: req.body.description,
+                    privacy:req.body.privacy,
                     date:date
                 }]
             });
@@ -31,6 +32,7 @@ const addPostController = async (req, res) => {
             userPosts.post.push({
                 title: req.body.title,
                 description: req.body.description,
+                privacy:req.body.privacy,
                 date:date
             });
             await userPosts.save();

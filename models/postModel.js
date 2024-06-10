@@ -6,6 +6,7 @@ const postSchema = new Schema({
     post: [{ // Array to store multiple post
         title: { type: String },
         description: { type: String },
+        privacy:{ type: String },
         date:{type: String}
     }],
   
