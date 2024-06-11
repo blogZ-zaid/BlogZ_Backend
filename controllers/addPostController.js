@@ -3,8 +3,7 @@ const postModel = require("../models/postModel.js");
 const addPostController = async (req, res) => {
 
     try {
-        const loggedInUserId = req.session.userId; // Assuming you have the user ID in the request object
-        console.log("In Add Post Controller loggedInuser ",loggedInUserId)
+        const userId=req.body.userId;
         const currentDate = new Date();
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth() + 1; // Months are zero-based, so January is 0
@@ -12,13 +11,13 @@ const addPostController = async (req, res) => {
         
         const date = `${year}-${month}-${day}`;
         // Check if the user already has notes
-        let userPosts = await postModel.findOne({ userId: loggedInUserId });
+        let userPosts = await postModel.findOne({ userId: userId });
        
 
         // If the user does not have any notes, create a new note document
         if (!userPosts) {
             userPosts = new postModel({
-                userId: loggedInUserId,
+                userId: userId,
                 post: [{
                     title: req.body.title,
                     description: req.body.description,

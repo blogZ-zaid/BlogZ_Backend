@@ -17,7 +17,6 @@ const loginController = async (req, res) => {
     const passwordMatch = await bcrypt.compare(userCredentials.password, user.password);
     
     if (passwordMatch) {
-      req.session.userId = user._id; // Set userId in session
       const userData = {
         _id: user._id,
         fullName: user.fullName,
