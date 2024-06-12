@@ -8,7 +8,7 @@ const app = express();
  app.use(cors({ credentials: true, origin: 'https://blogz07.netlify.app' }));
 
 // For Development 
-//app.use(cors({ credentials: true, origin: 'http://localhost:4200' }));
+// app.use(cors({ credentials: true, origin: 'http://localhost:4200' }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -17,11 +17,15 @@ app.use(express.urlencoded({ extended: true }));
 const signupController = require("./controllers/signupController.js");
 const loginController = require("./controllers/loginController.js");
 const addPostController = require("./controllers/addPostController.js");
+const getAllPostController = require('./controllers/getAllPostController.js');
+const getAllUsersController = require('./controllers/getAllUsersController.js');
 
 // Routes
 app.post("/api/signup", signupController);
 app.post("/api/login", loginController);
 app.post("/api/addPost", addPostController);
+app.get("/api/getAllPublicPost",getAllPostController);
+app.get("/api/getAllUsers",getAllUsersController);
 
 // Port Details
 const port = process.env.PORT || 4000;
