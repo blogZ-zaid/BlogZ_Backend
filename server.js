@@ -2,9 +2,10 @@ require('dotenv').config();
 require("./db/dbinit.js");
 const express = require("express");
 const cors = require('cors');
+const path = require('path');
 const app = express();
 
-//For Live
+// For Live
  app.use(cors({ credentials: true, origin: 'https://blogz07.netlify.app' }));
 
 // For Development 
@@ -12,6 +13,9 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Serve static files from the 'public' directory
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 
 // Controllers
 const signupController = require("./controllers/signupController.js");
@@ -24,8 +28,8 @@ const getAllUsersController = require('./controllers/getAllUsersController.js');
 app.post("/api/signup", signupController);
 app.post("/api/login", loginController);
 app.post("/api/addPost", addPostController);
-app.get("/api/getAllPublicPost",getAllPostController);
-app.get("/api/getAllUsers",getAllUsersController);
+app.get("/api/getAllPublicPost", getAllPostController);
+app.get("/api/getAllUsers", getAllUsersController);
 
 // Port Details
 const port = process.env.PORT || 4000;

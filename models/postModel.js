@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'userModel' }, 
-    post: [{ // Array to store multiple post
+    post: [{ // Array to store multiple posts
         title: { type: String },
         description: { type: String },
-        privacy:{ type: String },
-        date:{type: String}
+        privacy: { type: String },
+        date: { type: String },
+        image: { type: String } // Add image field
     }],
-  
 });
 
 const postModel = mongoose.model("Post", postSchema);
