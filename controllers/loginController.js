@@ -22,6 +22,10 @@ const loginController = async (req, res) => {
         fullName: user.fullName,
         email: user.email,
         phoneNumber: user.phoneNumber,
+        followers:user.followers,
+        following:user.following,
+        followersCount:user.followersCount,
+        followingCount:user.followingCount
       };
       return res.json({ message: "Login successful", userData });
     } else {

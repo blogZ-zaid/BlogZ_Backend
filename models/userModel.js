@@ -7,6 +7,16 @@ const userSchema = new Schema({
     email:{type:String},
     phoneNumber:{type:String},
     password:{type:String},
+    followers:[{
+        userId: {type:String},
+        fullName:{type:String},
+    }],
+    following:[{
+        userId: {type:String},
+        fullName:{type:String},
+    }],
+    followersCount:{type:Number},
+    followingCount:{type:Number},
 });
 
 userSchema.pre("save",function(next){

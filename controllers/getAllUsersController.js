@@ -14,7 +14,9 @@ const getAllUsersController= async(req,res) =>{
                   let obj={
                     fullName:user.fullName,
                     email:user.email,
-                    id:user._id
+                    id:user._id,
+                    followers:user.followers,
+                    following:user.following
                   }
                     allUsersExceptOwn.push(obj);
                 }

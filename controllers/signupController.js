@@ -8,6 +8,11 @@ const signupController = async (req, res) => {
             email: req.body.email,
             phoneNumber: req.body.phoneNumber,
             password: req.body.password,
+            followers:[],
+            following:[],
+            followersCount:0,
+            followingCount:0
+
         };
         const check = await userModel.findOne({ email: userdata.email });
 
