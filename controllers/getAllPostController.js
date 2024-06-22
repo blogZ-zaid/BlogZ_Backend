@@ -7,9 +7,12 @@ const getAllPostController = async (req, res) => {
     let allPosts = await postModel.find();
     let allPublicPosts = [];
 
+    const userId = req.query.userId;
+
     for (let posts of allPosts) {
       for (let post of posts.post) {
-        if (post.privacy === "everyone") {
+        // Filter out posts by the userId passed through query and check for public posts
+        if (posts.userId.toString() !== userId && post.privacy === "everyone") {
           // Construct the image path based on the saved image filename in the database
           const imagePath = post.image ? path.join(__dirname, `../public${post.image}`) : null;
           // Read the image file asynchronously
